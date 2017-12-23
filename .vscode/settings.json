@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.pug": "jade",
+        "*.moon": "vue",
+        "stdio.h": "c",
+        "unistd.h": "c",
+        "math.h": "c",
+        "string.h": "c"
+    }
+}
