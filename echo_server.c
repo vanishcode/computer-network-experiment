@@ -39,8 +39,17 @@ int main()
     {
         int clntSock = accept(servSock, (struct sockaddr *)&clntAddr, &nSize);
         int strLen = recv(clntSock, buffer, BUF_SIZE, 0); //接收客户端发来的数据
-        printf("%s\n",buffer);
-        send(clntSock, buffer, strLen, 0);                //将数据原样返回
+
+        // 客户端退出
+        if (buffer[0] == 'q')
+        {
+            printf("over~\n");
+            exit(0);
+        }
+        // 打印客户端发送的数据
+        printf("string from client: %s\n", buffer);
+
+        send(clntSock, buffer, strLen, 0); //将数据原样返回
 
         //关闭套接字
         close(clntSock);

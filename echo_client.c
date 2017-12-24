@@ -17,12 +17,9 @@
 
 int main()
 {
-
-    //创建套接字
-
     //向服务器发起请求
     struct sockaddr_in sockAddr;
-    memset(&sockAddr, 0, sizeof(sockAddr)); //每个字节都用0填充
+    memset(&sockAddr, 0, sizeof(sockAddr));
     sockAddr.sin_family = PF_INET;
     sockAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
     sockAddr.sin_port = htons(1234);
@@ -33,17 +30,25 @@ int main()
     {
         int sock = socket(AF_INET, SOCK_STREAM, 0);
         connect(sock, (struct sockaddr *)&sockAddr, sizeof(sockAddr));
+
         //获取用户输入的字符串并发送给服务器
-
-        printf("Input a string: ");
+        printf("input a string: ");
         scanf("%s", bufSend);
-        send(sock, bufSend, strlen(bufSend), 0);
-        //接收服务器传回的数据
 
+        send(sock, bufSend, strlen(bufSend), 0);
+
+        // 退出
+        if (bufSend[0] == 'q')
+        {
+            printf("over~\n");
+            exit(0);
+        }
+
+        //接收服务器传回的数据
         recv(sock, bufRecv, BUF_SIZE, 0);
 
         //输出接收到的数据
-        printf("Message form server: %s\n", bufRecv);
+        printf("server echo: %s\n", bufRecv);
 
         memset(bufSend, 0, BUF_SIZE); //重置缓冲区
         memset(bufRecv, 0, BUF_SIZE); //重置缓冲区
