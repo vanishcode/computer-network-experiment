@@ -1,7 +1,7 @@
 /**
  * socket实验 时间同步
- * 12.22
- * server.c
+ * 12.23
+ * 服务器端
  * macOS 10.12
  * by wjh
 */
@@ -26,7 +26,7 @@ int main()
 
     // 调用getime，获取当前时间
     getime(time_buffer);
-    printf("server:%s\n",time_buffer);
+    printf("now:%s\n",time_buffer);
 
     // 创建套接字
     int serverSocket = socket(AF_INET, SOCK_STREAM, 0);

@@ -1,3 +1,11 @@
+/**
+ * socket实验 回声服务器
+ * 12.24
+ * 服务器端
+ * macOS 10.12
+ * by wjh
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

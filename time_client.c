@@ -1,3 +1,11 @@
+/**
+ * socket实验 时间同步
+ * 12.23
+ * 客户端
+ * macOS 10.12
+ * by wjh
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
