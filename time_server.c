@@ -15,15 +15,12 @@
 #include <netinet/in.h>
 #include <time.h>
 #include "getime.h"
+#define HIDE_CURSOR() printf("\033[?25l")
 
 int main()
 {
     // 存储时间数组
     char time_buffer[8];
-
-    // 调用getime，获取当前时间
-    getime(time_buffer);
-    printf("now:%s\n",time_buffer);
 
     // 创建套接字
     int serverSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -48,13 +45,23 @@ int main()
     // 接收请求
     struct sockaddr_in clientAddress;
     socklen_t clientAddressSize = sizeof(clientAddress);
-    int clientSocket = accept(serverSocket, (struct sockaddr*)&clientAddress, &clientAddressSize);
 
-    // 发送时间数据
-    write(clientSocket,time_buffer,sizeof(time_buffer));
+    while (1)
+    {
+        HIDE_CURSOR();
+        // 调用getime，获取当前时间
+        getime(time_buffer);
+        printf("now:%s", time_buffer);
+        // 客户端socket
+        int clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddress, &clientAddressSize);
+        // 发送时间数据
+        write(clientSocket, time_buffer, sizeof(time_buffer));
 
-    // 关闭
-    close(clientSocket);
+        // 关闭
+        close(clientSocket);
+        usleep(1000);
+    }
+
     close(serverSocket);
 
     return 0;
