@@ -14,10 +14,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <time.h>
-
 #include "getime.h"
-
-#define BUFFER_SIZE 100
 
 int main()
 {
