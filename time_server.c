@@ -21,7 +21,6 @@
 
 int main()
 {
-    
     // 存储时间数组
     char time_buffer[8];
 
