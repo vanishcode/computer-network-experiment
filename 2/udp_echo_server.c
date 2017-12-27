@@ -29,6 +29,7 @@ int main(){
     socklen_t nSize = sizeof(clntAddr);
     char buffer[BUF_SIZE];  //缓冲区
     while(1){
+        memset(buffer,0,BUF_SIZE);
         int strLen = recvfrom(sock, buffer, BUF_SIZE, 0, (struct sockaddr *)&clntAddr, &nSize);
         printf("%s\n",buffer);
         sendto(sock, buffer, strLen, 0, (struct sockaddr *)&clntAddr, nSize);
