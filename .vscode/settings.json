@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.pug": "jade",
+        "*.moon": "vue",
+        "time.h": "c"
+    }
+}
