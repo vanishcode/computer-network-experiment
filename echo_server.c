@@ -38,6 +38,7 @@ int main()
     while (1)
     {
         int clntSock = accept(servSock, (struct sockaddr *)&clntAddr, &nSize);
+
         int strLen = recv(clntSock, buffer, BUF_SIZE, 0); //接收客户端发来的数据
 
         // 客户端退出

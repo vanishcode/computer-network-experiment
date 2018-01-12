@@ -48,7 +48,7 @@ int main()
 
     while (1)
     {
-        HIDE_CURSOR();
+        // HIDE_CURSOR();
         // 调用getime，获取当前时间
         getime(time_buffer);
         printf("now:%s", time_buffer);
